@@ -1,9 +1,23 @@
 // Project by Gavin H. and Lawrence L.
 
 // Imports go Here
+import { api } from "./api";
 
-// Dungeon tiles will be assorted in a defined gridspace.
-// We assign tiles in the grid with our functions
-const gridWidth = 10;
-      gridHeight = 10;
+const makeRoom = (label) => ({
+      _tag: 'room',
+      label
+    });
+    
+    const combineLeftToRight = (left, right) => {
+      return {
+        _tag: 'combineLeftToRight',
+        left,
+        right
+      }
+    }
+    
+    const dungeon = makeRoom('dungeon');
+    const upstairs = combineLeftToRight(makeRoom('kitchen'), 
+                                        makeRoom('living room'));
+    const house = combineLeftToRight(dungeon, upstairs);
 
