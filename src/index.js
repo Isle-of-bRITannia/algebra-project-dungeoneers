@@ -3,16 +3,24 @@
 import * as api from "./api.js";
 import {interpret} from "./stringify.js";
 
+const kitchen = api.makeRoomWithParams('Kitchen', ["Pans", "Stove", "Kitchen Gun"], "Chef's Knife");
+const livingRoom = api.makeRoomWithParams('Living Room', ["Television", "Coffee Table", "Uvula"], "Lost Remote");
+const bedroom = api.makeRoomWithParams('Bedroom', ["A Bed", "A Bed", "A Bed"], "Dirty Sheets");
+const bathroom = api.makeRoomWithParams('Bathroom', ["Bathtub", "Showerhead", "Toothbrush"], "Stiff Towel");
+const gamerRoom = api.makeRoomWithParams('Gamer Den', ["Game Console", "Couch", "Disgruntled Gamer"], "Smelly Socks");
+const closet = api.makeRoomWithParams('Closet', ["Jacket", "Suit", "Coat Hangars"], "The Greatest Tie You've Ever Seen!")
+const diningRoom = api.makeRoomWithParams('Dining Room', ["Table", "Chair", "Chair", "Plate", "Silverware"], "Golden Spoon")
+
 const dungeonStr = interpret(api.tower([
   api.hallway([
     api.plainRoom(),
-    api.makeRoomWithParams('Kitchen', ["Pans", "Stove", "Kitchen Gun"], "Chef's Knife"),
-    api.makeRoomWithParams('Living Room', ["Television", "Coffee Table", "Uvula"], "Lost Remote"),
+    kitchen,
+    livingRoom,
     api.combineTopToBottom(
-      api.makeRoomWithParams('Bedroom', ["A Bed", "A Bed", "A Bed"], "Dirty Sheets"),
-      api.makeRoomWithParams('Bathroom', ["Bathtub", "Showerhead", "Toothbrush"], "Stiff Towel")
+      bedroom,
+      bathroom
     )
-  ]), api.plainRoom(), api.plainRoom(), api.plainRoom()])
+  ]), diningRoom, gamerRoom, closet])
 );
 
 console.log(dungeonStr);
