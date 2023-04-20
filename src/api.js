@@ -16,10 +16,30 @@ export const combineBottomToTop = (bottom, top) => combineTopToBottom(top, botto
 
 export const hallway = (arrOfRooms) => {
   const [first, ...rest] = arrOfRooms;
-  return rest.reduce((acc, room) => combineLeftToRight(acc, room), first);
+  return rest.reduce((acc, currRoom) => combineLeftToRight(acc, currRoom), first);
 };
 
 export const tower = (arrOfRooms) => {
   const [first, ...rest] = arrOfRooms;
-  return rest.reduce((acc, room) => combineTopToBottom(acc, room), first);
+  return rest.reduce((acc, currRoom) => combineTopToBottom(acc, currRoom), first);
+};
+
+export const topRightStaircase = (arrOfRooms) => {
+  const [first, ...rest] = arrOfRooms;
+  return rest.reduce((acc, currRoom, index) => index % 2 == 0 ? combineLeftToRight(acc, currRoom) : combineBottomToTop(acc, currRoom), first);
+};
+
+export const topLeftStaircase = (arrOfRooms) => {
+  const [first, ...rest] = arrOfRooms;
+  return rest.reduce((acc, currRoom, index) => index % 2 == 0 ? combineRightToLeft(acc, currRoom) : combineBottomToTop(acc, currRoom), first);
+};
+
+export const bottomRightStaircase = (arrOfRooms) => {
+  const [first, ...rest] = arrOfRooms;
+  return rest.reduce((acc, currRoom, index) => index % 2 == 0 ? combineLeftToRight(acc, currRoom) : combineTopToBottom(acc, currRoom), first);
+};
+
+export const bottomLeftStaircase = (arrOfRooms) => {
+  const [first, ...rest] = arrOfRooms;
+  return rest.reduce((acc, currRoom, index) => index % 2 == 0 ? combineRightToLeft(acc, currRoom) : combineTopToBottom(acc, currRoom), first);
 };
