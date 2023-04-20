@@ -7,8 +7,8 @@ const myDetailsObjectToText = (details) => {
 
 export const interpret = (dungeon) => {
   const outputStr = recurseThrough(dungeon);
-  //return outputStr.substring(outputStr.indexOf("You are in"));
-  return outputStr;
+  return outputStr.substring(outputStr.indexOf("You are in"));
+  //return outputStr;
 };
 
 const recurseThrough= (dungeon) => {
