@@ -17,9 +17,9 @@ export const combineBottomToTop = (bottom, top) => combineTopToBottom(top, botto
 export const hallway = (arrOfRooms) => {
   const [first, ...rest] = arrOfRooms;
   return rest.reduce((acc, room) => combineLeftToRight(acc, room), first);
-}
+};
 
 export const tower = (arrOfRooms) => {
   const [first, ...rest] = arrOfRooms;
   return rest.reduce((acc, room) => combineTopToBottom(acc, room), first);
-}
+};
