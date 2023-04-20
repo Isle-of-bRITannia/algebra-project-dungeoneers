@@ -1,20 +1,16 @@
-// This is how we will manipulate the dungeon tiles
+export const room = (details) =>({
+  _tag: 'room',
+  details
+});
 
-const algebra = {
-    room: (details) => ({
-      _tag: 'room',
-      details
-    }),
-    leftToRight: (left, right) => ({
-      _tag: 'leftToRight',
-      left,
-      right
-    }),
-    topToBottom: (top, bottom) => ({
-      _tag: 'topToBottom',
-      top,
-      bottom
-    })
-  };
+export const leftToRight = (left, right) =>({
+  _tag: 'leftToRight',
+  left,
+  right
+});
 
-  export {algebra};
+export const topToBottom = (top, bottom) => ({
+  _tag: 'topToBottom',
+  top,
+  bottom
+});

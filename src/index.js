@@ -1,23 +1,16 @@
 // Project by Gavin H. and Lawrence L.
 
-// Imports go Here
-import { api } from "./api";
+import * as api from "./api.js";
+import {interpret} from "./stringify.js";
 
-const makeRoom = (label) => ({
-      _tag: 'room',
-      label
-    });
-    
-    const combineLeftToRight = (left, right) => {
-      return {
-        _tag: 'combineLeftToRight',
-        left,
-        right
-      }
-    }
-    
-    const dungeon = makeRoom('dungeon');
-    const upstairs = combineLeftToRight(makeRoom('kitchen'), 
-                                        makeRoom('living room'));
-    const house = combineLeftToRight(dungeon, upstairs);
+const dungeonStr = interpret(api.hallway([
+  api.plainRoom(),
+  api.makeRoomWithParams('Kitchen', ["Pans", "Stove", "Kitchen Gun"], "Chef's Knife"),
+  api.makeRoomWithParams('Living Room', ["Television", "Coffee Table", "Uvula"], "Lost Remote"),
+  api.combineTopToBottom(
+    api.makeRoomWithParams('Bedroom', ["A Bed", "A Bed", "A Bed"], "Dirty Sheets"),
+    api.makeRoomWithParams('Bathroom', ["Bathtub", "Showerhead", "Toothbrush"], "Stiff Towel")
+  )
+]));
 
+console.log(dungeonStr);
