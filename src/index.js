@@ -24,10 +24,6 @@ const dungeonStr = interpret(api.tower([
       lavatory, workshop, prisonBlock
     ]),
     plainRoom,
-    api.combineTopToBottom(
-      bedroom,
-      bathroom
-    ),
     kitchen,
     livingRoom,
     api.topRightStaircase([
